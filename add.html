@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title> My First Page</title>
+        <script>
+            function add()
+            {
+                var a=document.getElementById("t2").value;
+                a=Number.parseInt(a);
+                var b=document.getElementById("t3").value;
+                b=Number.parseInt(b);
+                var c=a+b;
+                document.getElementById("t4").value=c;
+            }
+        </script>
+    </head>
+    <body>
+        <p align="center"><b><i>The Addition of numbers </i></b></p>
+        <label>Enter Number 1:</label>
+        <input type="text" id="t2"/>
+        <br><br>
+        <label>Enter Number 2:</label>
+        <input type="text" id="t3"/>
+        <br><br>
+        <label> The Addition is: </label>
+        <input type="text" id="t4" readonly/>
+        <button onclick="add()" align="center">Add</button>
+    </body>
+</html>
