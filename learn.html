@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LearnSphere | AI Mentor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="card">
+    <h2>🧠 AI Mentor</h2>
+    <p>Enter any Machine Learning topic</p>
+
+    <input id="topic" placeholder="CNN, PCA, SVM, Transformers">
+    <button onclick="learn()">Learn</button>
+
+    <div id="output" class="output"></div>
+
+    <a class="link" href="quiz.html">➡ Take Quiz</a>
+  </div>
+</div>
+
+<script>
+const API_BASE =
+  window.location.origin.includes("ngrok")
+  ? window.location.origin
+  : "http://127.0.0.1:8000";
+
+function learn() {
+  const topic = document.getElementById("topic").value;
+  document.getElementById("output").innerText = "Loading...";
+
+  fetch(`${API_BASE}/mentor`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      topic: topic,
+      prompt: "Explain clearly with key concepts, examples, and use cases"
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    localStorage.setItem("topic", topic);
+    document.getElementById("output").innerText = data.explanation;
+  })
+  .catch(() => {
+    document.getElementById("output").innerText = "Backend not reachable";
+  });
+}
+</script>
+
+</body>
+</html>
