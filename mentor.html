@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Mentor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <div class="card">
+    <h2>🧠 AI Mentor</h2>
+    <p>Enter any ML topic to learn deeply</p>
+
+    <input id="topic" placeholder="CNN, PCA, SVM, Transformers">
+    <button onclick="learn()">Learn</button>
+
+    <div id="output" style="white-space:pre-line; margin-top:20px;"></div>
+
+    <a class="link" href="quiz.html">➡ Take Quiz</a>
+  </div>
+</div>
+
+<script>
+function learn() {
+  const topic = document.getElementById("topic").value;
+  localStorage.setItem("topic", topic);
+  document.getElementById("output").innerText = "Loading...";
+
+  fetch("http://127.0.0.1:8000/mentor", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({
+      topic: topic,
+      prompt: "Explain with examples"
+    })
+  })
+  .then(r => r.json())
+  .then(d => {
+    document.getElementById("output").innerText = d.explanation;
+  });
+}
+</script>
+</body>
+</html>
