@@ -1,6 +1,3 @@
-n=int(input())
-s=set()
-for i in range(n):
-    string=input()
-    s.add(string)
+n = int(input())
+s = {input().strip() for _ in range(n)}
 print(len(s))
