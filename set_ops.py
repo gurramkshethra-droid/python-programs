@@ -16,4 +16,4 @@ for _ in range(p):
     elif ll == "difference_update":
         m.difference_update(m2)
 
-print(sum(m))
+print(sum(m))#sum of elements
