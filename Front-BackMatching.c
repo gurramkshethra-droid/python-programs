@@ -9,7 +9,7 @@ int main() {
         int N;
         char S[105];
         int freq[26] = {0};
-//Matching front and back
+//Matching front and back for the result
         scanf("%d", &N);
         scanf("%s", S);
 
