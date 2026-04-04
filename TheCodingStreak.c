@@ -15,7 +15,7 @@ int main() {
 
             if (A > 0) {
                 current++;
-                if (current > maxStreak)
+                if (current > maxStreak)// compare current with max
                     maxStreak = current;
             } else {
                 current = 0;
