@@ -1,0 +1,6 @@
+# cook your dish here
+m=int(input())
+if m>=5:
+    print(m*85)
+else:
+    print(m*100)
